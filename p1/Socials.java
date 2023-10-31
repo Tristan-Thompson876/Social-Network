@@ -1,12 +1,27 @@
 package p1;
+
+import p1.enums.FeedAlgorithm;
+
+/**
+ * Class Socials
+ */
 public class Socials{
-    String name;
-    //FeedAlgorithm feedSort;
-    int pstID;
+    ////Attributes\\\\
+    private String name;
+    FeedAlgorithm feedSort;
+    private int pstID;
     public Socials(){
 
     }
 
+    ////Getters and Setters section\\\\
+    public String getName(){
+        return this.name;
+
+    }
+    public void setName(String name){
+        name = this.name;
+    }
     public void addNewSocialsPost(Post pst){
 
     }
