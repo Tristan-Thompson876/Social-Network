@@ -1,5 +1,5 @@
 package p1.enums;
 
-public class ReactionType {
+public enum ReactionType {
     
 }
