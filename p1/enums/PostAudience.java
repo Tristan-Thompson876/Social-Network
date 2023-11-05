@@ -1,17 +1,43 @@
 package p1.enums;
 
 /**
- * An enum enumaration
+ * Defines the audience scope for a post.
  */
 public enum PostAudience {
-    
-    Private("Only Owner"), Public("Public , except restricted"), Subscribers("Subscribers");
-    public String description;
 
-    PostAudience(String description){
+    /**
+     * The post is private and can only be seen by the owner.
+     */
+    Private("Only Owner"),
+
+    /**
+     * The post is public but not visible to restricted profiles.
+     */
+    Public("Public, except restricted"),
+
+    /**
+     * The post is visible only to subscribers of the owner.
+     */
+    Subscribers("Subscribers!");
+
+    private String description;
+
+    /**
+     * Constructs a PostAudience with a given description.
+     *
+     * @param description A textual description of the audience type.
+     */
+    PostAudience(String description) {
         this.description = description;
     }
 
-    public String getDecription;
-
+    /**
+     * Retrieves the description of the audience type.
+     *
+     * @return The description of the audience type.
+     */
+    public String getDescription() {
+        return description;
+    }
 }
+
