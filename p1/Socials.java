@@ -11,7 +11,7 @@ public class Socials{
     ////Attributes\\\\
     private String name;
     FeedAlgorithm feedSort;
-    private int pstID;
+    //private int pstID;
     private ArrayList<Integer> posts = new ArrayList<Integer>();
     private User[] users;
     public Socials(User[] users){
@@ -27,6 +27,8 @@ public class Socials{
     public void setName(String name){
         name = this.name;
     }
+
+
     public void addNewSocialsPost(Integer pst){
 
     }
@@ -39,7 +41,11 @@ public class Socials{
     }
 
     public String whoOwnsSocialsPost(int pstID){
-        return null;
+        for(Post p:posts){
+            if(p.getPostId() == pstID){
+                return p.getUsername();
+            }
+        }
     }
 
     public Integer getAllSocialsPosts(){
