@@ -1,5 +1,7 @@
 package p1;
 
+import java.util.ArrayList;
+
 import p1.enums.FeedAlgorithm;
 
 /**
@@ -10,7 +12,9 @@ public class Socials{
     private String name;
     FeedAlgorithm feedSort;
     private int pstID;
-    public Socials(){
+    private ArrayList<Integer> posts = new ArrayList<Integer>();
+    public Socials(ArrayList User){
+
 
     }
 
@@ -22,7 +26,7 @@ public class Socials{
     public void setName(String name){
         name = this.name;
     }
-    public void addNewSocialsPost(Post pst){
+    public void addNewSocialsPost(Integer pst){
 
     }
 
