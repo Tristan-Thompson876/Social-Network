@@ -13,8 +13,9 @@ public class Socials{
     FeedAlgorithm feedSort;
     private int pstID;
     private ArrayList<Integer> posts = new ArrayList<Integer>();
-    public Socials(ArrayList User){
-
+    private User[] users;
+    public Socials(User[] users){
+        this.users = users;
 
     }
 
