@@ -1,6 +1,8 @@
 package p1;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.Flow.Subscriber;
 
 import p1.enums.PostAudience;
 import p1.enums.PostType;
@@ -12,46 +14,36 @@ public class User  {
     public User[] users;
     private PostType type;
 
-	// immutable instance data
-	private String username;
-
-	// mutable instance data
-	private String password;
-	// there should be no overlap between subscribers and restricted
-	// however, an overlap between subscribed and restricted is OK
 	private ArrayList<String> subscribers = new ArrayList<String>(), subscribed = new ArrayList<String>(),
 			restricted = new ArrayList<String>();
 	private ArrayList<Post> posts = new ArrayList<Post>();
+    private PostAudience sharedWith;
+    private Post post;
+    Content content;
+    private List<Content> contents;
 
-	public User(String username, String password) {
+	public User(String username, String password, Post post) {
 		super();
 		this.username = username;
 		this.password = password;
+        this.post = post;
 	}
 
 	public boolean login(String uname, String pword) {
 		return false;
 	}
 
-	public void addNewPost(PostType type, PostAudience sharedWith, Content... contents) {
-	}
-
-	public void deletePost(int pstID) {
-	}
-
 	public void reactToPost(String pstID, ReactionType vote) {
 	}
 
-    public void addNewPost(PostType type, PostAudience sharedWith, List<Content> contents, int pstID)
+    public void addNewPost(PostType type, PostAudience sharedWith, Content content, int pstID)
     {
         this.type = type;
         this.sharedWith = sharedWith;
-        this.contents = contents;
+        this.content = content;
     
-
-        Post np = new Post(pstID, type, sharedWith, contents);
-        //posts.put(np.getPostId(), np);
-
+        Post np = new Post(pstID, type, sharedWith, content);
+        posts.add(np);
         //String postId = new Post.getPostId();
 
     }
@@ -60,12 +52,23 @@ public class User  {
      * @param pstID
      */
     public void deletePost(int pstID){
+        for(Post p : posts){
+            if (p.getPostId() == pstID){
+                posts.remove(p);
+            }
+        }
+    }
 
 	public boolean unrestrict(String name) {
 		return false;
 	}
 
 	public boolean isASubscriber(String name) {
+        for(String sub: subscribers){
+            if(sub == name){
+                return true;
+            }
+        }
 		return false;
 	}
 

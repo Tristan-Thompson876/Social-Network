@@ -1,5 +1,7 @@
 package p1;
 
+import java.util.List;
+
 import p1.enums.PostAudience;
 import p1.enums.PostType;
 import p1.enums.ReactionType;
