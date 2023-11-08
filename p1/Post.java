@@ -17,6 +17,7 @@ public class Post implements Comparable<Post>{
 
     }
 
+
     /**
      * 
      * @return Integer
