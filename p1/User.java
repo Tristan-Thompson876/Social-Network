@@ -1,5 +1,6 @@
 package p1;
 import java.util.ArrayList;
+import java.util.List;
 
 import p1.enums.PostAudience;
 import p1.enums.PostType;
@@ -68,7 +69,7 @@ public class User {
 
     }
 
-    public int addNewPost(PostType type, PostAudience sharedWith)//, Content contents)
+    public List<Content> addNewPost(PostType type, PostAudience sharedWith, List<Content> contents)
     {
         //Post np = new Post(0, type, sharedWith, Content);
         //posts.put(np.getPostId(), np);
@@ -76,6 +77,7 @@ public class User {
         //String postId = new Post.getPostId();
         
 
+        return null;
     }
     /**
      * 

@@ -1,6 +1,8 @@
 package p1;
 
 import java.util.ArrayList;
+import java.util.List;
+
 import p1.enums.FeedAlgorithm;
 
 /**
@@ -14,7 +16,7 @@ public class Socials{
     private User[] users;
     private ArrayList<Integer> posts = new ArrayList<Integer>();
     public Socials(User[] users, ArrayList posts){
-        
+
         this.users = users;
 
     }
@@ -48,7 +50,7 @@ public class Socials{
         }
     }
 
-    public Integer getAllSocialsPosts(){
+    public List<Integer> getAllSocialsPosts(){
         return null;
     }
     public void addNewSocialsUser(String name, String password){
@@ -63,11 +65,11 @@ public class Socials{
         return null;
     }
 
-    public String getAllSocialsUsers(){
+    public List<String> getAllSocialsUsers(){
         return null;
     }
 
-    public Integer getSocialsUserFeed(String name){
+    public List<Integer> getSocialsUserFeed(String name){
         return null;
     }
 
