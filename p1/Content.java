@@ -1,22 +1,24 @@
 package p1;
-public class Content extends Post {
+
+public class Content {
     private String data;
 
-    public Content(){
-    this.data = data;
+    public Content(String data) {
+        this.data = data;
     }
 
-    public String getData(){
+    public String getData() {
         return data;
     }
 
-    public void setData(){
+    public void setData(String data) {
         this.data = data;
     }
 
     @Override
     public String toString() {
-        // TODO Auto-generated method stub
-        return super.toString();
+        return "Content{" +
+               "data='" + data + '\'' +
+               '}';
     }
 }
