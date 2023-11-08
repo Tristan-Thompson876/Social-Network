@@ -85,6 +85,11 @@ public class User  {
 	}
 
 	public boolean isPostOwner(int pstID) {
+        for(Post p: posts){
+            if(p.getPostId() == pstID){
+                return true;
+            }
+        }
 		return false;
 	}
 
