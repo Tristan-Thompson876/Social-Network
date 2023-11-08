@@ -1,82 +1,82 @@
 package p1;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import p1.enums.FeedAlgorithm;
 
-/**
- * Class Socials
- */
-public class Socials{
-    ////Attributes\\\\
-    private String name;
-    FeedAlgorithm feedSort;
-    //private int pstID;
-    private User[] users;
-    private ArrayList<Integer> posts = new ArrayList<Integer>();
-    public Socials(User[] users, ArrayList posts){
+public class Socials {
 
-        this.users = users;
+	/* is immutable instance data, i.e., once set cannot be changed */
+	private String name;
 
-    }
+	/* is mutable instance data */
+	private FeedAlgorithm feedSort;
+	private ArrayList<Post> posts = new ArrayList<Post>();
+	private ArrayList<User> users = new ArrayList<User>();
 
-    ////Getters and Setters section\\\\
-    public String getName(){
-        return this.name;
+	public Socials(String name) {
+		super();
+		this.name = name;
+		this.feedSort = FeedAlgorithm.Popular;
+	}
 
-    }
-    public void setName(String name){
-        this.name = name;
-    }
+	public Socials(String name, FeedAlgorithm feedSort) {
+		super();
+		this.name = name;
+		this.feedSort = feedSort;
+	}
 
+	public void addNewSocialsPost(Post post) {
+	}
 
-    public void addNewSocialsPost(Integer pst){
+	public void removeSocialsPost(int pstID) {
+	}
 
-    }
+	public boolean searchForSocialsPost(int pstID) {
+		return false;
+	}
 
-    public void removeSocialsPost(int pstID){
+	public String whoOwnsSocialsPost(int pstID) {
+		return "";
+	}
 
-    }
-    public Boolean searchForSocialsPost(Post pst){
-        return null;
-    }
+	public ArrayList<Integer> getAllSocialsPosts() {
+		return new ArrayList<Integer>();
+	}
 
-    public String whoOwnsSocialsPost(int pstID){
-        for(Integer p:posts){
-            if(p.getPostId() == pstID){
-                return p.getUsername();
-            }
-        }
-    }
+	public void addNewUser(String name, String password) {
+	}
 
-    public List<Integer> getAllSocialsPosts(){
-        return null;
-    }
-    public void addNewSocialsUser(String name, String password){
+	public void removeUser(String name) {
+	}
 
-    }
+	public boolean isSocialsUser(String name) {
+		return false;
+	}
 
-    public void removeSocialsUser(String name){
+	public ArrayList<String> getAllSocialsUsers() {
+		return new ArrayList<String>();
+	}
 
-    }
+	public ArrayList<Integer> getSocialsUserFeed(String name) {
+		return new ArrayList<Integer>();
+	}
 
-    public Boolean isSocialsUser(String name){
-        return null;
-    }
+	public String getSocialsName() {
+		return name;
+	}
 
-    public List<String> getAllSocialsUsers(){
-        return null;
-    }
+	public FeedAlgorithm getSocialsFeedSort() {
+		return feedSort;
+	}
 
-    public List<Integer> getSocialsUserFeed(String name){
-        return null;
-    }
+	public void updateSocialsFeedSort(FeedAlgorithm feedSort) {
+		this.feedSort = feedSort;
+	}
 
-    public String toString(){
-        return null;
-    }
-
-
+	@Override
+	public String toString() {
+		return "TBD";
+	}
 
 }
