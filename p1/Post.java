@@ -10,7 +10,7 @@ public class Post implements Comparable<Post>{
     private int popularityScore;
     public Post[] posts;
 
-    public Post(int pstID, PostType type, PostAudience sharedWith){
+    public Post(int pstID, PostType type, PostAudience sharedWith, Content content){
 
     }
     public Post(){

@@ -6,17 +6,22 @@ import p1.enums.PostType;
 import p1.enums.ReactionType;
 import p1.enums.FeedAlgorithm;
 
-public class User extends Socials {
+public class User {
     private String username;
     private String password;
     public User[] users;
 
     public User(String username, String password){
-        super(null);
+        
         this.username = username;
         this.username = password;
     }
 
+    public User(String username, String password, ArrayList post){
+        
+        this.username = username;
+        this.username = password;
+    }
     /**
      * 
      * @return String
@@ -63,7 +68,8 @@ public class User extends Socials {
 
     }
 
-    public void addNewPost(PostType type, PostAudience sharedWith){
+    public int addNewPost(PostType type, PostAudience sharedWith)//, Content contents)
+    {
         //Post np = new Post(0, type, sharedWith, Content);
         //posts.put(np.getPostId(), np);
 

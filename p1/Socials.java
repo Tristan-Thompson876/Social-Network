@@ -1,7 +1,6 @@
 package p1;
 
 import java.util.ArrayList;
-
 import p1.enums.FeedAlgorithm;
 
 /**
@@ -12,9 +11,10 @@ public class Socials{
     private String name;
     FeedAlgorithm feedSort;
     //private int pstID;
-    public Post[] posts;
     private User[] users;
-    public Socials(User[] users){
+    private ArrayList<Integer> posts = new ArrayList<Integer>();
+    public Socials(User[] users, ArrayList posts){
+        
         this.users = users;
 
     }
@@ -41,7 +41,7 @@ public class Socials{
     }
 
     public String whoOwnsSocialsPost(int pstID){
-        for(Post p:posts){
+        for(Integer p:posts){
             if(p.getPostId() == pstID){
                 return p.getUsername();
             }
