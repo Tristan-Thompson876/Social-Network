@@ -11,6 +11,7 @@ public class User  {
     private String username;
     private String password;
     public User[] users;
+    private PostType type;
 
     public User(String username, String password){
         
@@ -69,15 +70,18 @@ public class User  {
 
     }
 
-    public List<Content> addNewPost(PostType type, PostAudience sharedWith, List<Content> contents)
+    public void addNewPost(PostType type, PostAudience sharedWith, List<Content> contents, int pstID)
     {
-        //Post np = new Post(pstID, type, sharedWith, content);
+        this.type = type;
+        this.sharedWith = sharedWith;
+        this.contents = contents;
+    
+
+        Post np = new Post(pstID, type, sharedWith, contents);
         //posts.put(np.getPostId(), np);
 
         //String postId = new Post.getPostId();
-        
 
-        return null;
     }
     /**
      * 
