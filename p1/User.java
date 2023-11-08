@@ -1,75 +1,52 @@
 package p1;
+
 import java.util.ArrayList;
-import java.util.List;
 
 import p1.enums.PostAudience;
 import p1.enums.PostType;
 import p1.enums.ReactionType;
-import p1.enums.FeedAlgorithm;
 
+<<<<<<< HEAD
 public class User  {
     private String username;
     private String password;
     public User[] users;
     private PostType type;
+=======
+public class User {
+>>>>>>> 2a069e7e99d4584794fe4e6d938509907d982732
 
-    public User(String username, String password){
-        
-        this.username = username;
-        this.username = password;
-    }
+	// immutable instance data
+	private String username;
 
-    public User(String username, String password, ArrayList post){
-        
-        this.username = username;
-        this.username = password;
-    }
-    /**
-     * 
-     * @return String
-     */
-    public String getUsername(){
-        return username;
-    }
+	// mutable instance data
+	private String password;
+	// there should be no overlap between subscribers and restricted
+	// however, an overlap between subscribed and restricted is OK
+	private ArrayList<String> subscribers = new ArrayList<String>(), subscribed = new ArrayList<String>(),
+			restricted = new ArrayList<String>();
+	private ArrayList<Post> posts = new ArrayList<Post>();
 
-    /**
-     * @return String
-     */
-    public String getPassword(){
-        return password;
-    }
+	public User(String username, String password) {
+		super();
+		this.username = username;
+		this.password = password;
+	}
 
-    /**
-     * 
-     */
-    public void setUsername(){
-        this.username = username;
-    }
+	public boolean login(String uname, String pword) {
+		return false;
+	}
 
-    /**
-     * 
-     */
-    public void setPassword(){
-        this.password = password;
-    }
+	public void addNewPost(PostType type, PostAudience sharedWith, Content... contents) {
+	}
 
-    /**
-     * 
-     * @param username
-     * @param pword
-     * @return Boolean
-     */
-    public Boolean login(String username, String pword){
-        //if(username )
-        for(User u : users){
-            if (u.getUsername() != username && u.getPassword() != pword){
-                return false;
-            }
-        }
-        return true;
+	public void deletePost(int pstID) {
+	}
 
-    }
+	public void reactToPost(String pstID, ReactionType vote) {
+	}
 
+<<<<<<< HEAD
     public void addNewPost(PostType type, PostAudience sharedWith, List<Content> contents, int pstID)
     {
         this.type = type;
@@ -88,117 +65,51 @@ public class User  {
      * @param pstID
      */
     public void deletePost(int pstID){
+=======
+	public boolean subscribe(String name) {
+		return false;
+	}
 
-    }
+	public boolean unsubscribe(String name) {
+		return false;
+	}
 
-    /**
-     * 
-     * @param pstID
-     * @param vote
-     */
-    public void reactToPost(String pstID, ReactionType vote){
-        Post post = posts.get(pstID);
-        if (post != null){
-            post.addReaction(vote);
-        }
-    }
+	public boolean restrict(String name) {
+		return false;
+	}
+>>>>>>> 2a069e7e99d4584794fe4e6d938509907d982732
 
-    /**
-     * 
-     * @param name
-     * @return Boolean
-     */
-    public Boolean subscribe(String name){
-        return null;
-    }
+	public boolean unrestrict(String name) {
+		return false;
+	}
 
-    /**
-     * 
-     * @param name
-     * @return Boolean
-     */
-    public Boolean unsubscribe(String name){
-        return null;
-    }
+	public boolean isASubscriber(String name) {
+		return false;
+	}
 
-    /**
-     * 
-     * @param name
-     * @return Boolean
-     */
-    public Boolean restrict(String name){
-        return null;
+	public boolean isSubscribedTo(String name) {
+		return false;
+	}
 
-    }
+	public boolean isRestricted(String name) {
+		return false;
+	}
 
-    /**
-     * 
-     * @param name
-     * @return Boolean
-     */
-    public Boolean unrestrict(String name){
-        return null;
-    }
+	public boolean hasAccesstoPost(String name, int pstID) {
+		return false;
+	}
 
-    /**
-     * 
-     * @param name
-     * @return Boolean
-     */
-    public Boolean isASubscriber(String name){
-        return null;
-    }
+	public boolean isPostOwner(int pstID) {
+		return false;
+	}
 
-    /**
-     * 
-     * @param name
-     * @return Boolean
-     */
-    public Boolean isSubscribed(String name){
-        return null;
-    }
+	public ArrayList<String> subscribersWithAccessToPost(int pstID) {
+		return new ArrayList<String>();
+	}
 
-    /**
-     * 
-     * @param name
-     * @return Boolean
-     */
-    public Boolean isRestricted(String name){
-        return null;
-    }
-
-    /**
-     * 
-     * @param pstID
-     * @return Boolean
-     */
-    public Boolean hasAccessToPost(int pstID){
-        return null;
-    }
-
-    /**
-     * 
-     * @param pstID
-     * @return Boolean
-     */
-    public Boolean isPostOwner(int pstID){
-        return null;
-    }
-
-    /**
-     * 
-     * @param pstID
-     * @return String
-     */
-    public String subscribersWithAccessToPost(int pstID){
-        return null;
-    }
-
-    /**
-     * 
-     */
-    public String toString(){
-        return null;
-    }
+	@Override
+	public String toString() {
+		return "TBD";
+	}
 
 }
