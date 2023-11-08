@@ -7,7 +7,7 @@ import p1.enums.PostType;
 import p1.enums.ReactionType;
 import p1.enums.FeedAlgorithm;
 
-public class User {
+public class User  {
     private String username;
     private String password;
     public User[] users;
@@ -71,7 +71,7 @@ public class User {
 
     public List<Content> addNewPost(PostType type, PostAudience sharedWith, List<Content> contents)
     {
-        //Post np = new Post(0, type, sharedWith, Content);
+        //Post np = new Post(pstID, type, sharedWith, content);
         //posts.put(np.getPostId(), np);
 
         //String postId = new Post.getPostId();
