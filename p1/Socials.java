@@ -25,7 +25,7 @@ public class Socials{
 
     }
     public void setName(String name){
-        name = this.name;
+        this.name = name;
     }
 
 

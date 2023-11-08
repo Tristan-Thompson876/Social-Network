@@ -1,13 +1,18 @@
 package p1;
 import java.util.ArrayList;
-import p1.enums.ReactionType;
 
-public class User {
+import p1.enums.PostAudience;
+import p1.enums.PostType;
+import p1.enums.ReactionType;
+import p1.enums.FeedAlgorithm;
+
+public class User extends Socials {
     private String username;
     private String password;
-    public ArrayList<User> users;
+    public User[] users;
 
     public User(String username, String password){
+        super(null);
         this.username = username;
         this.username = password;
     }
@@ -49,10 +54,22 @@ public class User {
      */
     public Boolean login(String username, String pword){
         //if(username )
-        return null;
+        for(User u : users){
+            if (u.getUsername() != username && u.getPassword() != pword){
+                return false;
+            }
+        }
+        return true;
+
     }
 
-    //public addNewPost()
+    public void addNewPost(PostType type, PostAudience sharedWith){
+        Post np = new Post(0, type, sharedWith);
+
+        //String postId = new Post.getPostId();
+        
+
+    }
     /**
      * 
      * @param pstID
