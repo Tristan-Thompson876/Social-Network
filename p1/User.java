@@ -6,15 +6,11 @@ import p1.enums.PostAudience;
 import p1.enums.PostType;
 import p1.enums.ReactionType;
 
-<<<<<<< HEAD
 public class User  {
     private String username;
     private String password;
     public User[] users;
     private PostType type;
-=======
-public class User {
->>>>>>> 2a069e7e99d4584794fe4e6d938509907d982732
 
 	// immutable instance data
 	private String username;
@@ -46,7 +42,6 @@ public class User {
 	public void reactToPost(String pstID, ReactionType vote) {
 	}
 
-<<<<<<< HEAD
     public void addNewPost(PostType type, PostAudience sharedWith, List<Content> contents, int pstID)
     {
         this.type = type;
@@ -65,19 +60,6 @@ public class User {
      * @param pstID
      */
     public void deletePost(int pstID){
-=======
-	public boolean subscribe(String name) {
-		return false;
-	}
-
-	public boolean unsubscribe(String name) {
-		return false;
-	}
-
-	public boolean restrict(String name) {
-		return false;
-	}
->>>>>>> 2a069e7e99d4584794fe4e6d938509907d982732
 
 	public boolean unrestrict(String name) {
 		return false;
