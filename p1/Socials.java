@@ -12,7 +12,7 @@ public class Socials{
     private String name;
     FeedAlgorithm feedSort;
     //private int pstID;
-    private ArrayList<Integer> posts = new ArrayList<Integer>();
+    public Post[] posts;
     private User[] users;
     public Socials(User[] users){
         this.users = users;

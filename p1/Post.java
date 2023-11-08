@@ -38,7 +38,7 @@ public class Post implements Comparable<Post>{
      * @param type
      */
     public void addReaction(String name, ReactionType type){
-        
+        //for
     }
 
     /**
@@ -58,7 +58,7 @@ public class Post implements Comparable<Post>{
         return null;
     }
     
-    
+
     @Override
     public int compareTo(Post o) {
         // TODO Auto-generated method stub

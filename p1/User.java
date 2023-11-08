@@ -64,7 +64,8 @@ public class User extends Socials {
     }
 
     public void addNewPost(PostType type, PostAudience sharedWith){
-        Post np = new Post(0, type, sharedWith);
+        //Post np = new Post(0, type, sharedWith, Content);
+        //posts.put(np.getPostId(), np);
 
         //String postId = new Post.getPostId();
         
@@ -84,7 +85,10 @@ public class User extends Socials {
      * @param vote
      */
     public void reactToPost(String pstID, ReactionType vote){
-        
+        Post post = posts.get(pstID);
+        if (post != null){
+            post.addReaction(vote);
+        }
     }
 
     /**
