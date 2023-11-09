@@ -59,6 +59,9 @@ public class User  {
     }
 
 	public boolean unrestrict(String name) {
+        if(isRestricted(name) == false){
+            return true;
+        }
 		return false;
 	}
 
