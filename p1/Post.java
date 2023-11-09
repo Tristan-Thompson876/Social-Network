@@ -10,10 +10,10 @@ import p1.enums.ReactionType;
 
 public class Post {
 
-	private static int posts = 0;
+	private static int postscount = 1;
 
 	// immutable instance data
-	private int postID = ++posts;
+	private int pstID = ++postscount;
 	private PostType postType;
 	private PostAudience sharedWith = PostAudience.Public;
 	private ArrayList<Content> contents = new ArrayList<Content>();
@@ -29,9 +29,11 @@ public class Post {
 		addContents(contents);
 	}
 
-	public Post(PostType postType, Content contents) {
+	public Post(PostType postType, PostAudience sharedWith, Content contents, int pstID) {
 		this.postType = postType;
+		this.sharedWith = sharedWith;
 		addContents(contents);
+		this.postID = pstID;
 	}
 
 	private void addContents(Content contents) {
@@ -59,11 +61,14 @@ public class Post {
 	public PostAudience getSharedWith() {
 		return sharedWith;
 	}
-    public int getId(){
-        return postID;
+    public int getPostId(){
+        return pstID;
     }
 
 	public int getPopularityScore() {
 		return popularityScore;
+	}
+	public void setPostID(){
+		this.pstID = pstID;
 	}
 }

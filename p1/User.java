@@ -42,8 +42,9 @@ public class User  {
         this.content = content;
     
         Post np = new Post(type, sharedWith, content);
+        
+        np.setPostID();
         posts.add(np);
-        //String postId = new Post.getPostId();
 
     }
     /**
