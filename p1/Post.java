@@ -16,25 +16,25 @@ public class Post {
 	private int postID = ++posts;
 	private PostType postType;
 	private PostAudience sharedWith = PostAudience.Public;
-	private ArrayList<Content> contents;
+	private ArrayList<Content> contents = new ArrayList<Content>();
 
 	// mutable instance data
 	private int popularityScore = 0;
 	private Reaction upvote = new Reaction(ReactionType.Upvote);
 	private Reaction downvote = new Reaction(ReactionType.Downvote);
 
-	public Post(PostType postType, PostAudience sharedWith, Content... contents) {
+	public Post(PostType postType, PostAudience sharedWith, p1.Content contents) {
 		this.postType = postType;
 		this.sharedWith = sharedWith;
 		addContents(contents);
 	}
 
-	public Post(PostType postType, Content... contents) {
+	public Post(PostType postType, Content contents) {
 		this.postType = postType;
 		addContents(contents);
 	}
 
-	private void addContents(Content... contents) {
+	private void addContents(Content contents) {
 		for (Content c : contents)
 			this.contents.add(c);
 	}

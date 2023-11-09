@@ -35,13 +35,13 @@ public class User  {
 	public void reactToPost(String pstID, ReactionType vote) {
 	}
 
-    public void addNewPost(PostType type, PostAudience sharedWith, Content content, int pstID)
+    public void addNewPost(PostType type, PostAudience sharedWith, Content content)
     {
         this.type = type;
         this.sharedWith = sharedWith;
         this.content = content;
     
-        Post np = new Post(pstID, type, sharedWith, content);
+        Post np = new Post(type, sharedWith, content);
         posts.add(np);
         //String postId = new Post.getPostId();
 
