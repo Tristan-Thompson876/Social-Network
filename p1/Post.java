@@ -1,71 +1,69 @@
 package p1;
 
-import java.util.List;
+import java.util.ArrayList;
+
+import javax.swing.text.AbstractDocument.Content;
 
 import p1.enums.PostAudience;
 import p1.enums.PostType;
 import p1.enums.ReactionType;
 
+public class Post {
 
-public class Post implements Comparable<Post>{
-    private int pstID;
-    private int popularityScore;
-    public Post[] posts;
+	private static int posts = 0;
 
-    public Post(int pstID, PostType type, PostAudience sharedWith, Content content){
+	// immutable instance data
+	private int postID = ++posts;
+	private PostType postType;
+	private PostAudience sharedWith = PostAudience.Public;
+	private ArrayList<Content> contents;
 
+	// mutable instance data
+	private int popularityScore = 0;
+	private Reaction upvote = new Reaction(ReactionType.Upvote);
+	private Reaction downvote = new Reaction(ReactionType.Downvote);
+
+	public Post(PostType postType, PostAudience sharedWith, Content... contents) {
+		this.postType = postType;
+		this.sharedWith = sharedWith;
+		addContents(contents);
+	}
+
+	public Post(PostType postType, Content... contents) {
+		this.postType = postType;
+		addContents(contents);
+	}
+
+	private void addContents(Content... contents) {
+		for (Content c : contents)
+			this.contents.add(c);
+	}
+
+	private void updatePopularityScore() {
+	}
+
+	public boolean addReaction(String name, ReactionType type) {
+		
+		// a user can only react once to a post
+		return false;
+	}
+
+	public boolean removeReaction(String name) {
+		return false;
+	}
+
+	public boolean alreadyReacted(String name) {
+		return false;
+	}
+
+	public PostAudience getSharedWith() {
+		return sharedWith;
+	}
+    public int getId(){
+        return postID;
     }
-    public Post(){
 
-    }
-
-
-    /**
-     * 
-     * @return Integer
-     */
-    public Integer getPostId(){
-        return pstID;
-    }
-
-    /**
-     * 
-     */
-    public void setPostID(){
-        this.pstID = pstID;
-    }
-
-    /**
-     * 
-     * @param name
-     * @param type
-     */
-    public void addReaction(String name, ReactionType type){
-        //for
-    }
-
-    /**
-     * 
-     * @param name
-     */
-    public void removeReaction(String name){
-
-    }
-
-    /**
-     * 
-     * @param name
-     * @return Boolean
-     */
-    public Boolean alreadyReacted(String name){
-        return null;
-    }
-    
-
-    @Override
-    public int compareTo(Post o) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'compareTo'");
-    }
-    
+	public int getPopularityScore() {
+		return popularityScore;
+	}
 }
