@@ -14,8 +14,7 @@ public class User  {
     public User[] users;
     private PostType type;
 
-	private ArrayList<String> subscribers = new ArrayList<String>(), subscribed = new ArrayList<String>(),
-			restricted = new ArrayList<String>();
+	private ArrayList<String> subscribers = new ArrayList<String>(), subscribed = new ArrayList<String>(), restricted = new ArrayList<String>();
 	private ArrayList<Post> posts = new ArrayList<Post>();
     private PostAudience sharedWith;
     private Post post;
@@ -73,10 +72,20 @@ public class User  {
 	}
 
 	public boolean isSubscribedTo(String name) {
+		for(String sub: subscribed){
+            if(sub == name){
+                return true;
+            }
+        }
 		return false;
 	}
 
 	public boolean isRestricted(String name) {
+		for(String sub: restricted){
+            if(sub == name){
+                return true;
+            }
+        }
 		return false;
 	}
 
