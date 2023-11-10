@@ -34,6 +34,45 @@ public class TempMain {
         //System.out.println("Password for testing: " + u1.getPassword());
         System.out.println("User Count in Socials: " + mySocials.getAllSocialsUsers().size());
 
+    
+        
+        System.out.println("Post Type:/n option 1: Text/n option 2: external link");
+        //break;
+        int option = scan.nextInt();
+        switch (option) {
+            case 1:
+                System.out.println("post type selected : text");
+                type = "Text";
+                break;
+            case 2:
+                System.out.println("post type selected : link");
+                type = "link";
+                break;
+    
+        System.out.println("Post audience: (Private: pt/n/Public: pc/n/Subscribers: subs/n)");
+        String noption = scan.next();
+        switch (noption) {
+            case "pt":
+                System.out.println("audience selected : text");
+                aud = "Private";
+
+                break;
+            case "pc":
+                System.out.println("audience selected : link");
+                aud = "Public";
+                break;
+            case "subs":
+                System.out.println("audience selected : link");
+                aud = "Subscribers";
+                break;
+                    
+
+        //create a post
+        System.out.println("Enter Post type\n" + "________________________");
+         type = scan.next();
+        System.out.println("Enter your password\n" + "________________________");
+        PostAudience = scan.next();
+        u1.addNewPost(type, null, postContent);
 
     }
 }
