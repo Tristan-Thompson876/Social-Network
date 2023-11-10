@@ -26,11 +26,24 @@ public class Post {
 	private Reaction upvote = new Reaction(ReactionType.Upvote);
 	private Reaction downvote = new Reaction(ReactionType.Downvote);
 
+	/**
+	 * 
+	 * @param postType
+	 * @param sharedWith
+	 * @param content
+	 */
 	public Post(PostType postType, PostAudience sharedWith, Content content) {
 		this.postType = postType;
 		this.sharedWith = sharedWith;
 		this.content = content;
 	}
+	/**
+	 * 
+	 * @param postType
+	 * @param sharedWith
+	 * @param content
+	 * @param pstID
+	 */
 	public Post(PostType postType, PostAudience sharedWith, Content content, int pstID) {
 		this.postType = postType;
 		this.sharedWith = sharedWith;
@@ -65,7 +78,7 @@ public class Post {
 	public void removeReaction(String name) {
 		if(reactedUsers.contains(name)){
 			reactedUsers.remove(name);
-			
+
 		}
 		else{
 			System.out.println(name + "have not reacted");
@@ -74,10 +87,16 @@ public class Post {
 	/**
 	 * 
 	 * @param name
-	 * @return
+	 * @return boolean
 	 */
 	public boolean alreadyReacted(String name) {
-		return false;
+		if (!reactedUsers.contains(name)) {
+			return false;
+		}
+		else{
+			return false;
+		}
+
 	}
 
 	//////////////////////getters below//////////////////////////////
