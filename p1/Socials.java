@@ -8,11 +8,14 @@ public class Socials {
 
 	/* is immutable instance data, i.e., once set cannot be changed */
 	private String name;
+	private String password;
 
 	/* is mutable instance data */
 	private FeedAlgorithm feedSort;
 	private ArrayList<Post> posts = new ArrayList<Post>();
 	private ArrayList<User> users = new ArrayList<User>();
+
+	
 
 	public Socials(String name) {
 		super();
@@ -43,11 +46,21 @@ public class Socials {
 	}
 
 	public boolean searchForSocialsPost(int pstID) {
+		for (Post post : posts) {
+			if (post.getPostId() == pstID) {
+				return true;
+			}
+		}
 		return false;
 	}
 
 	public String whoOwnsSocialsPost(int pstID) {
-		return "";
+		for (Post post : posts) {
+			if (post.getPostId() == pstID) {
+				return "Owner found";
+			}
+		}
+		return "Owner not found";
 	}
 
 	public ArrayList<Integer> getAllSocialsPosts() {
@@ -55,9 +68,15 @@ public class Socials {
 	}
 
 	public void addNewUser(String name, String password) {
+		this.password = password;
+		User u = new User(name, password, null);
+		users.add(u);
 	}
 
 	public void removeUser(String name) {
+		if(isSocialsUser(name)){
+			users.remove(name);
+		}
 	}
 
 	public boolean isSocialsUser(String name) {
