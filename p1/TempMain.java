@@ -16,7 +16,7 @@ public class TempMain {
         // Get user input for username and password
         System.out.println("Enter User name(no space)\n" + "________________________");
         String username = scan.next();
-        System.out.println("Enter your password");
+        System.out.println("Enter your password\n" + "________________________");
         String pass = scan.next();
 
         // Create a user with the provided username and password
