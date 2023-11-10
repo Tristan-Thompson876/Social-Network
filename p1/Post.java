@@ -30,14 +30,14 @@ public class Post {
 		this.content = content;
 
 	}
-/* 
+
 	public Post(PostType postType, PostAudience sharedWith, Content content, int pstID) {
 		this.postType = postType;
 		this.sharedWith = sharedWith;
 		this.pstID = pstID;
 	}
 
-*/
+
 	private void updatePopularityScore() {
 	}
 

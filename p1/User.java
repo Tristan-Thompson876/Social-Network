@@ -41,8 +41,8 @@ public class User {
         this.sharedWith = sharedWith;
         this.content = content;
     
-        Post np = new Post(postType, sharedWith, content);
-        
+        Post np = new Post(postType, sharedWith, null);
+        //Post np = new Post(postType, sharedWith, content);
         np.setPostID();
         posts.add(np);
     }
