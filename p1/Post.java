@@ -61,7 +61,7 @@ public class Post {
 		// a user can only react once to a post
         if (!reactedUsers.contains(name)) {
             
-            Reaction reaction = new Reaction(type);
+            //Reaction reaction = new Reaction(type);
 			if(type == ReactionType.Upvote){
 				popularityScore++;
 			}
