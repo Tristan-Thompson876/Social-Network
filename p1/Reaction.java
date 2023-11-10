@@ -24,8 +24,7 @@ public class Reaction {
             reactors.add(name);
             
         }
-
-		// duplicates not allowed
+		return;
 	}
 
 	public void removeReactor(String name) {
@@ -34,7 +33,6 @@ public class Reaction {
         
        }
 	}
-
 
 	public boolean alreadyReacted(String name) {
 		return reactors.contains(name);
