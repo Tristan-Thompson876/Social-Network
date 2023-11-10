@@ -9,7 +9,8 @@ import p1.enums.PostType;
 import p1.enums.ReactionType;
 
 public class Post {
-	private static int postscount = 1;
+	
+	private static int postscount = 0;
 
 	// immutable instance data
 	private int pstID = ++postscount;
@@ -31,10 +32,10 @@ public class Post {
 	 * @param content
 	 */
 	public Post(PostType postType, PostAudience sharedWith, Content content) {
-		this.postType = postType;
-		this.sharedWith = sharedWith;
-		this.content = content;
-	}
+        this.postType = postType;
+        this.sharedWith = sharedWith;
+        this.content = content;
+    }
 	/**
 	 * 
 	 * @param postType
@@ -61,6 +62,9 @@ public class Post {
         if (!reactedUsers.contains(name)) {
             
             Reaction reaction = new Reaction(type);
+			if(type == ReactionType.Upvote){
+				popularityScore++;
+			}
             reactedUsers.add(name);
             
         } else {

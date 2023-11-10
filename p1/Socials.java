@@ -8,7 +8,7 @@ public class Socials {
 
 	/* is immutable instance data, i.e., once set cannot be changed */
 	private String name;
-	private String password;
+	//private String password;
 
 	/* is mutable instance data */
 	private FeedAlgorithm feedSort;
@@ -68,7 +68,6 @@ public class Socials {
 	}
 
 	public void addNewUser(String name, String password) {
-		this.password = password;
 		User u = new User(name, password, null);
 		users.add(u);
 	}

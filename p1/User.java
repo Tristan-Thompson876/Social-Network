@@ -7,9 +7,10 @@ import java.util.concurrent.Flow.Subscriber;
 import p1.enums.PostAudience;
 import p1.enums.PostType;
 import p1.enums.ReactionType;
+import p1.Post;
 
 public class User {
-    private String username;
+    private String uname;
     private String password;
     public User[] users;
     private PostType postType;
@@ -21,19 +22,39 @@ public class User {
     private Content content;
     //private List<Content> contents;
 
-	public User(String username, String password, Post post) {
+	public User(String uname, String password, Post post) {
 		super();
-		this.username = username;
+		this.uname = uname;
 		this.password = password;
         this.post = post;
 	}
+    //////////////////////////////Getters
+    public String getUname(){
+        return uname;
+    }
+    public String getPassword(){
+        return password;
+    }
+    public PostType getPostType(){
+        return postType;
+    }
+    //////////////////////////////Setters
+    public void setUname(String uname){
+        this.uname = uname;
+    }
+    public void setPassword(String password){
+        this.password = password;
+    }
+    public void setPostType(PostType postType){
+        this.postType = postType;
+    }
 
 	public boolean login(String uname, String pword) {
 		return false;
 	}
 
 	public void reactToPost(String pstID, ReactionType vote) {
-        
+
 	}
 
     public void addNewPost(PostType postType, PostAudience sharedWith, Content content)
@@ -42,11 +63,9 @@ public class User {
         this.sharedWith = sharedWith;
         this.content = content;
     
-        //Post np = new Post(postType, sharedWith, null);
-        Post np = new Post(postType, sharedWith, content);
-        np.setPostID();
-        //np.setContent(content);
-        posts.add(np);
+        Post p = new Post(postType, sharedWith, null);
+        //p.setPostID(pstID);
+        posts.add(p);
     }
     /**
      * 
