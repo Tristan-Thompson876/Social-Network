@@ -27,9 +27,19 @@ public class Socials {
 	}
 
 	public void addNewSocialsPost(Post post) {
+		posts.add(post);
 	}
 
 	public void removeSocialsPost(int pstID) {
+		for (Post post : posts) {
+			if (post.getPostId() == pstID) {
+				posts.remove(post);
+				System.out.println("Post with pstID " + pstID + "was removed successfully.");
+				//return; 
+			}
+			System.out.println("Post with pstID " + pstID + "was not found");
+		}
+
 	}
 
 	public boolean searchForSocialsPost(int pstID) {

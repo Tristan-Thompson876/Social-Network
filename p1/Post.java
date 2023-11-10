@@ -9,8 +9,6 @@ import p1.enums.PostType;
 import p1.enums.ReactionType;
 
 public class Post {
-
-
 	private static int postscount = 1;
 
 	// immutable instance data
