@@ -60,7 +60,6 @@ public class TempMain {
             case "pt":
                 System.out.println("audience selected : text");
                 aud = PostAudience.Private;
-
                 break;
             case "pc":
                 System.out.println("audience selected : link");
