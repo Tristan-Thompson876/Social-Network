@@ -10,6 +10,7 @@ import p1.enums.ReactionType;
 
 public class Post {
 
+
 	private static int postscount = 1;
 
 	// immutable instance data
@@ -17,6 +18,7 @@ public class Post {
 	private PostType postType = PostType.Text;
 	private PostAudience sharedWith = PostAudience.Public;
 	private ArrayList<Content> contents = new ArrayList<Content>();
+	private ArrayList<String> reactedUsers = new ArrayList<>();
 	private Content content;
 
 	// mutable instance data
@@ -28,9 +30,7 @@ public class Post {
 		this.postType = postType;
 		this.sharedWith = sharedWith;
 		this.content = content;
-
 	}
-
 	public Post(PostType postType, PostAudience sharedWith, Content content, int pstID) {
 		this.postType = postType;
 		this.sharedWith = sharedWith;
@@ -38,51 +38,108 @@ public class Post {
 	}
 
 	/* 
-
 	private void updatePopularityScore() {
 	}
- */
-	public boolean addReaction(String name, ReactionType type) {
-		
+ 	*/
+
+	/**
+	 * add a reaction with the name of reactor to post
+ 	 */
+	public void addReaction(String name, ReactionType type) {
 		// a user can only react once to a post
-		return false;
+        if (!reactedUsers.contains(name)) {
+            
+            Reaction reaction = new Reaction(type);
+            reactedUsers.add(name);
+            
+        } else {
+            System.out.println(name + "already reacted");
+        
+        }
+    }
+	/**
+	 * 
+	 * @param name
+	 * @return
+	 */
+	public void removeReaction(String name) {
+		if(reactedUsers.contains(name)){
+			reactedUsers.remove(name);
+			
+		}
+		else{
+			System.out.println(name + "have not reacted");
+		}
 	}
-
-	public boolean removeReaction(String name) {
-		return false;
-	}
-
+	/**
+	 * 
+	 * @param name
+	 * @return
+	 */
 	public boolean alreadyReacted(String name) {
 		return false;
 	}
 
+	//////////////////////getters below//////////////////////////////
+	/**
+	 * 
+	 * @return The type of post
+	 */
 	public PostType getPostType(){
 		return postType;
 	}
+	/**
+	 * 
+	 * @return The audience of the post
+	 */
 	public PostAudience getSharedWith() {
 		return sharedWith;
 	}
+	/**
+	 * 
+	 * @return Id of the post
+	 */
     public int getPostId(){
         return pstID;
     }
+	/**
+	 * 
+	 * @return Content of the post
+	 */
 	public Content getContent(){
 		return content;
 	}
-
-
+	/**
+	 * 
+	 * @return The popularity score of the post
+	 */
 	public int getPopularityScore() {
 		return popularityScore;
 	}
-	public void setPostID(){
+
+	////////////////////Setter Methods Below//////////////////////////////
+	/**
+	 * Post Id setter
+	 */
+	public void setPostID(int pstID){
 		this.pstID = pstID;
 	}
-	public void setSharedWith(){
+	/**
+	 * Sharedwith setter
+	 */
+	public void setSharedWith(PostAudience sharedWith){
 		this.sharedWith = sharedWith;
 	}
-	public void setPostType(){
+	/**
+	 * Post Type setter
+	 */
+	public void setPostType(PostType postType){
 		this.postType = postType;
 	}
-	public void setContent(){
+	/**
+	 * Content setter
+	 */
+	public void setContent(Content content){
 		this.content = content;
 	}
 }
