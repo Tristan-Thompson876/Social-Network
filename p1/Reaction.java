@@ -20,14 +20,24 @@ public class Reaction {
 	}
 
 	public void addReactor(String name) {
+        if (!reactors.contains(name)) {
+            reactors.add(name);
+            
+        }
+
 		// duplicates not allowed
 	}
 
 	public void removeReactor(String name) {
+       if (reactors.contains(name)) {
+        reactors.remove(name);
+        
+       }
 	}
 
+
 	public boolean alreadyReacted(String name) {
-		return false;
+		return reactors.contains(name);
 	}
 
 	public int getCount() {
@@ -36,12 +46,15 @@ public class Reaction {
 
 	// returns a string with the reactors separated by a string
 	public String getReactors() {
-		return "TBD";
+		return String.join(", ", reactors);
 	}
 
 	@Override
 	public String toString() {
-		return "TBD";
+		return "Reaction{" +
+        "type=" + type +
+        ", reactors=" + getReactors() +
+        '}';
 	}
 
 }
