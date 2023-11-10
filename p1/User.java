@@ -33,6 +33,7 @@ public class User {
 	}
 
 	public void reactToPost(String pstID, ReactionType vote) {
+        
 	}
 
     public void addNewPost(PostType postType, PostAudience sharedWith, Content content)
@@ -41,9 +42,10 @@ public class User {
         this.sharedWith = sharedWith;
         this.content = content;
     
-        Post np = new Post(postType, sharedWith, null);
-        //Post np = new Post(postType, sharedWith, content);
+        //Post np = new Post(postType, sharedWith, null);
+        Post np = new Post(postType, sharedWith, content);
         np.setPostID();
+        //np.setContent(content);
         posts.add(np);
     }
     /**

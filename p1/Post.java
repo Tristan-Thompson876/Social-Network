@@ -14,7 +14,7 @@ public class Post {
 
 	// immutable instance data
 	private int pstID = ++postscount;
-	private PostType postType;
+	private PostType postType = PostType.Text;
 	private PostAudience sharedWith = PostAudience.Public;
 	private ArrayList<Content> contents = new ArrayList<Content>();
 	private Content content;
@@ -37,10 +37,11 @@ public class Post {
 		this.pstID = pstID;
 	}
 
+	/* 
 
 	private void updatePopularityScore() {
 	}
-
+ */
 	public boolean addReaction(String name, ReactionType type) {
 		
 		// a user can only react once to a post
