@@ -19,6 +19,7 @@ public class Post {
 	private ArrayList<Content> contents = new ArrayList<Content>();
 	private ArrayList<String> reactedUsers = new ArrayList<>();
 	private Content content;
+	private User username;
 
 	// mutable instance data
 	private int popularityScore = 0;
@@ -137,7 +138,13 @@ public class Post {
 	public int getPopularityScore() {
 		return popularityScore;
 	}
-
+	/**
+	 * 
+	 * @return
+	 */
+	public User getUsername(){
+		return username;
+	}
 	////////////////////Setter Methods Below//////////////////////////////
 	/**
 	 * Post Id setter
@@ -162,5 +169,12 @@ public class Post {
 	 */
 	public void setContent(Content content){
 		this.content = content;
+	}
+	/**
+	 * 
+	 * @param name
+	 */
+	public void setUname(User name){
+		this.username = name;
 	}
 }

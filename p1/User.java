@@ -54,7 +54,12 @@ public class User {
 	}
 
 	public void reactToPost(String pstID, ReactionType vote) {
-
+        for(Post p : posts){
+            if(p.getPostId() == Integer.parseInt(pstID)){
+                String username = p.getUsername().getUname();  // Assuming getUsername() returns an object with a method getUname()
+                p.addReaction(username, vote);
+            }
+        }
 	}
 
     public void addNewPost(PostType postType, PostAudience sharedWith, Content content)
