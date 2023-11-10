@@ -8,18 +8,18 @@ import p1.enums.PostAudience;
 import p1.enums.PostType;
 import p1.enums.ReactionType;
 
-public class User  {
+public class User {
     private String username;
     private String password;
     public User[] users;
-    private PostType type;
+    private PostType postType;
 
 	private ArrayList<String> subscribers = new ArrayList<String>(), subscribed = new ArrayList<String>(), restricted = new ArrayList<String>();
 	private ArrayList<Post> posts = new ArrayList<Post>();
     private PostAudience sharedWith;
     private Post post;
-    Content content;
-    private List<Content> contents;
+    private Content content;
+    //private List<Content> contents;
 
 	public User(String username, String password, Post post) {
 		super();
@@ -35,17 +35,16 @@ public class User  {
 	public void reactToPost(String pstID, ReactionType vote) {
 	}
 
-    public void addNewPost(PostType type, PostAudience sharedWith, Content content)
+    public void addNewPost(PostType postType, PostAudience sharedWith, Content content)
     {
-        this.type = type;
+        this.postType = postType;
         this.sharedWith = sharedWith;
         this.content = content;
     
-        Post np = new Post(type, sharedWith, content);
+        Post np = new Post(postType, sharedWith, content);
         
         np.setPostID();
         posts.add(np);
-
     }
     /**
      * 

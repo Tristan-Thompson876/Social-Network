@@ -17,8 +17,6 @@ public class Content {
 
     @Override
     public String toString() {
-        return "Content{" +
-               "data='" + data + '\'' +
-               '}';
+        return "Content:" + data + '\'';
     }
 }

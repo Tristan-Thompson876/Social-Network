@@ -17,30 +17,27 @@ public class Post {
 	private PostType postType;
 	private PostAudience sharedWith = PostAudience.Public;
 	private ArrayList<Content> contents = new ArrayList<Content>();
+	private Content content;
 
 	// mutable instance data
 	private int popularityScore = 0;
 	private Reaction upvote = new Reaction(ReactionType.Upvote);
 	private Reaction downvote = new Reaction(ReactionType.Downvote);
 
-	public Post(PostType postType, PostAudience sharedWith, p1.Content contents) {
+	public Post(PostType postType, PostAudience sharedWith, Content content) {
 		this.postType = postType;
 		this.sharedWith = sharedWith;
-		addContents(contents);
-	}
+		this.content = content;
 
-	public Post(PostType postType, PostAudience sharedWith, Content contents, int pstID) {
+	}
+/* 
+	public Post(PostType postType, PostAudience sharedWith, Content content, int pstID) {
 		this.postType = postType;
 		this.sharedWith = sharedWith;
-		addContents(contents);
-		this.postID = pstID;
+		this.pstID = pstID;
 	}
 
-	private void addContents(Content contents) {
-		for (Content c : contents)
-			this.contents.add(c);
-	}
-
+*/
 	private void updatePopularityScore() {
 	}
 
@@ -58,17 +55,33 @@ public class Post {
 		return false;
 	}
 
+	public PostType getPostType(){
+		return postType;
+	}
 	public PostAudience getSharedWith() {
 		return sharedWith;
 	}
     public int getPostId(){
         return pstID;
     }
+	public Content getContent(){
+		return content;
+	}
+
 
 	public int getPopularityScore() {
 		return popularityScore;
 	}
 	public void setPostID(){
 		this.pstID = pstID;
+	}
+	public void setSharedWith(){
+		this.sharedWith = sharedWith;
+	}
+	public void setPostType(){
+		this.postType = postType;
+	}
+	public void setContent(){
+		this.content = content;
 	}
 }
