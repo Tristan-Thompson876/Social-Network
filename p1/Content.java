@@ -1,17 +1,37 @@
 package p1;
 
+/**
+ * class Content
+ */
 public class Content {
-	// immutable instance data
-	private String data;
+    private String data;
 
-	public Content(String data) {
-		super();
-		this.data = data;
-	}
+    /**
+     * Constructor for Content
+     * @param data
+     */
+    public Content(String data) {
+        this.data = data;
+    }
 
-	@Override
-	public String toString() {
-		return ""+this.data;
-	}
+    /**
+     * 
+     * @return String data
+     */
+    public String getData() {
+        return data;
+    }
 
+    /**
+     * 
+     * @param data
+     */
+    public void setData(String data) {
+        this.data = data;
+    }
+
+    @Override
+    public String toString() {
+        return "Content:" + data + '\'';
+    }
 }
