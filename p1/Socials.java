@@ -95,9 +95,9 @@ public class Socials {
 		return new ArrayList<Integer>();
 	}
 
-	public String getSocialsName() {
+	/*public String getSocialsName() {
 		return name;
-	}
+	}*/
 
 	public FeedAlgorithm getSocialsFeedSort() {
 		return feedSort;
