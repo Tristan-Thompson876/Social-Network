@@ -54,20 +54,21 @@ public class TempMain {
     
         System.out.println("Post audience: (Private: pt/n/Public: pc/n/Subscribers: subs/n)");
         String noption = scan.next();
-        
+        PostAudience aud;
+
         switch (noption) {
             case "pt":
                 System.out.println("audience selected : text");
-                aud = "Private";
+                aud = PostAudience.Private;
 
                 break;
             case "pc":
                 System.out.println("audience selected : link");
-                aud = "Public";
+                aud = PostAudience.Public;
                 break;
             case "subs":
                 System.out.println("audience selected : link");
-                aud = "Subscribers";
+                aud = PostAudience.Subscribers;
                 break;
                     
 
