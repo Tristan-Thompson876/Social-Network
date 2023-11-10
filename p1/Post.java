@@ -50,13 +50,16 @@ public class Post {
 		this.pstID = pstID;
 	}
 
-	/* 
+	/**
+	 * updates the value of popularity score based on 
+	 */
 	private void updatePopularityScore() {
+		this.popularityScore = this.upvote.getCount() - this.downvote.getCount();
 	}
- 	*/
+ 	
 
 	/**
-	 * add a reaction with the name of reactor to post
+	 * add a reaction with the name of reactor to post and type of reaction
  	 */
 	public void addReaction(String name, ReactionType type) {
 		// a user can only react once to a post
@@ -64,7 +67,10 @@ public class Post {
             
             //Reaction reaction = new Reaction(type);
 			if(type == ReactionType.Upvote){
-				popularityScore++;
+				updatePopularityScore();
+			}
+			else if(type == ReactionType.Downvote){
+				updatePopularityScore();
 			}
             reactedUsers.add(name);
             
