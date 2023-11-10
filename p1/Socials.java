@@ -51,7 +51,12 @@ public class Socials {
 	}
 
 	public boolean isSocialsUser(String name) {
+		if (users.contains(name)) {
+			return true;  
+        } else {
+            System.out.println(name + "Not an user");
 		return false;
+		}
 	}
 
 	public ArrayList<String> getAllSocialsUsers() {
