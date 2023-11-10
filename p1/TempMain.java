@@ -6,6 +6,8 @@ import p1.enums.ReactionType;
 
 import java.util.Scanner;
 
+import org.w3c.dom.Text;
+
 public class TempMain {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
@@ -39,18 +41,20 @@ public class TempMain {
         System.out.println("Post Type:/n option 1: Text/n option 2: external link");
         //break;
         int option = scan.nextInt();
+        PostType type;
         switch (option) {
             case 1:
                 System.out.println("post type selected : text");
-                type = "Text";
+                type = PostType.Text;
                 break;
             case 2:
                 System.out.println("post type selected : link");
-                type = "link";
+                type = PostType.ExternalLink;
                 break;
     
         System.out.println("Post audience: (Private: pt/n/Public: pc/n/Subscribers: subs/n)");
         String noption = scan.next();
+        
         switch (noption) {
             case "pt":
                 System.out.println("audience selected : text");
@@ -69,7 +73,7 @@ public class TempMain {
 
         //create a post
         System.out.println("Enter Post type\n" + "________________________");
-         type = scan.next();
+        type = scan.next();
         System.out.println("Enter your password\n" + "________________________");
         PostAudience = scan.next();
         u1.addNewPost(type, null, postContent);
