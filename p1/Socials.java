@@ -1,142 +1,115 @@
 package p1;
 
 import java.util.ArrayList;
+
 import p1.enums.FeedAlgorithm;
 
-/**
- * Represents the social media platform. This class manages posts and users.
- */
 public class Socials {
 
-    // Immutable instance data: the name of the social media platform
-    private String name;
+	/* is immutable instance data, i.e., once set cannot be changed */
+	private String name;
+	//private String password;
 
-    // Mutable instance data: the sorting algorithm for feeds and lists of posts and users
-    private FeedAlgorithm feedSort;
-    private ArrayList<Post> posts = new ArrayList<>();
-    private ArrayList<User> users = new ArrayList<>();
+	/* is mutable instance data */
+	private FeedAlgorithm feedSort;
+	private ArrayList<Post> posts = new ArrayList<Post>();
+	private ArrayList<User> users = new ArrayList<User>();
 
-    /**
-     * Constructs a new Socials instance with a given name.
-     * The feed sorting algorithm is set to 'Popular' by default.
-     *
-     * @param name The name of the social media platform.
-     */
-    public Socials(String name) {
-        this.name = name;
-        this.feedSort = FeedAlgorithm.Popular;
-    }
+	
 
-    /**
-     * Constructs a new Socials instance with a given name and feed sorting algorithm.
-     *
-     * @param name The name of the social media platform.
-     * @param feedSort The feed sorting algorithm.
-     */
-    public Socials(String name, FeedAlgorithm feedSort) {
-        this.name = name;
-        this.feedSort = feedSort;
-    }
+	public Socials(String name) {
+		super();
+		this.name = name;
+		this.feedSort = FeedAlgorithm.Popular;
+	}
 
-    /**
-     * Adds a new post to the social media platform.
-     *
-     * @param post The post to be added.
-     */
-    public void addNewSocialsPost(Post post) {
-        posts.add(post);
-    }
+	public Socials(String name, FeedAlgorithm feedSort) {
+		super();
+		this.name = name;
+		this.feedSort = feedSort;
+	}
 
-    /**
-     * Removes a post from the social media platform by its ID.
-     *
-     * @param pstID The ID of the post to be removed.
-     */
-    public void removeSocialsPost(int pstID) {
-        posts.removeIf(post -> post.getPostId() == pstID);
-    }
+	public void addNewSocialsPost(Post post) {
+		posts.add(post);
+	}
 
-    /**
-     * Searches for a post by its ID.
-     *
-     * @param pstID The ID of the post to search for.
-     * @return True if the post exists, false otherwise.
-     */
-    public boolean searchForSocialsPost(int pstID) {
-        return posts.stream().anyMatch(post -> post.getPostId() == pstID);
-    }
+	public void removeSocialsPost(int pstID) {
+		for (Post post : posts) {
+			if (post.getPostId() == pstID) {
+				posts.remove(post);
+				System.out.println("Post with pstID " + pstID + "was removed successfully.");
+				//return; 
+			}
+			System.out.println("Post with pstID " + pstID + "was not found");
+		}
 
-    /**
-     * Finds the owner of a post by its ID.
-     *
-     * @param pstID The ID of the post.
-     * @return The name of the post's owner, or "Owner not found" if the post doesn't exist.
-     */
-    public String whoOwnsSocialsPost(int pstID) {
-        return posts.stream()
-                    .filter(post -> post.getPostId() == pstID)
-                    .findFirst()
-                    .map(Post::getOwnerName) // Assuming getOwnerName method in Post class
-                    .orElse("Owner not found");
-    }
+	}
 
-    /**
-     * Gets a list of all post IDs on the social media platform.
-     *
-     * @return A list of post IDs.
-     */
-    public ArrayList<Integer> getAllSocialsPosts() {
-        ArrayList<Integer> postIds = new ArrayList<>();
-        for (Post post : posts) {
-            postIds.add(post.getPostId());
-        }
-        return postIds;
-    }
+	public boolean searchForSocialsPost(int pstID) {
+		for (Post post : posts) {
+			if (post.getPostId() == pstID) {
+				return true;
+			}
+		}
+		return false;
+	}
 
-    /**
-     * Adds a new user to the social media platform.
-     *
-     * @param name The name of the user.
-     * @param password The password of the user.
-     */
-    public void addNewUser(String name, String password) {
-        users.add(new User(name, password)); // Assuming User class has a constructor with name and password
-    }
+	public String whoOwnsSocialsPost(int pstID) {
+		for (Post post : posts) {
+			if (post.getPostId() == pstID) {
+				return "Owner found";
+			}
+		}
+		return "Owner not found";
+	}
 
-    /**
-     * Removes a user from the social media platform by name.
-     *
-     * @param name The name of the user to be removed.
-     */
-    public void removeUser(String name) {
-        users.removeIf(user -> user.getName().equals(name)); // Assuming getName method in User class
-    }
+	public ArrayList<Integer> getAllSocialsPosts() {
+		return new ArrayList<Integer>();
+	}
 
-    /**
-     * Checks if a user exists on the social media platform by name.
-     *
-     * @param name The name of the user to check.
-     * @return True if the user exists, false otherwise.
-     */
-    public boolean isSocialsUser(String name) {
-        return users.stream().anyMatch(user -> user.getName().equals(name));
-    }
+	public void addNewUser(String name, String password) {
+		User u = new User(name, password, null);
+		users.add(u);
+	}
 
-    /**
-     * Gets a list of all user names on the social media platform.
-     *
-     * @return A list of user names.
-     */
-    public ArrayList<String> getAllSocialsUsers() {
-        ArrayList<String> userNames = new ArrayList<>();
-        for (User user : users) {
-            userNames.add(user.getName());
-        }
-        return userNames;
-    }
+	public void removeUser(String name) {
+		if(isSocialsUser(name)){
+			users.remove(name);
+		}
+	}
 
-    /**
-     * Gets the user feed for a specific user by name.
-     *
-     * @param name The name of the user.
-     * @return A list of post IDs in the user
+	public boolean isSocialsUser(String name) {
+		if (users.contains(name)) {
+			return true;  
+        } else {
+            System.out.println(name + "Not an user");
+		return false;
+		}
+	}
+
+	public ArrayList<String> getAllSocialsUsers() {
+		return new ArrayList<String>();
+	}
+
+	public ArrayList<Integer> getSocialsUserFeed(String name) {
+		return new ArrayList<Integer>();
+	}
+
+	public String getSocialsName() {
+		return name;
+	}
+
+	public FeedAlgorithm getSocialsFeedSort() {
+		return feedSort;
+	}
+
+	public void updateSocialsFeedSort(FeedAlgorithm feedSort) {
+		this.feedSort = feedSort;
+	}
+
+	@Override
+	public String toString() {
+		return "TBD";
+	}
+
+}

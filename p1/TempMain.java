@@ -35,13 +35,15 @@ public class TempMain {
         System.out.println("User Name: " + u1.getUname());
         //System.out.println("Password for testing: " + u1.getPassword());
         System.out.println("User Count in Socials: " + mySocials.getAllSocialsUsers().size());
+    
 
     
-        
+        PostType type = null;
+        PostAudience aud = null;
         System.out.println("Post Type:/n option 1: Text/n option 2: external link");
         //break;
         int option = scan.nextInt();
-        PostType type;
+        //PostType type;
         switch (option) {
             case 1:
                 System.out.println("post type selected : text");
@@ -51,10 +53,11 @@ public class TempMain {
                 System.out.println("post type selected : link");
                 type = PostType.ExternalLink;
                 break;
-    
+        }
         System.out.println("Post audience: (Private: pt/n/Public: pc/n/Subscribers: subs/n)");
         String noption = scan.next();
-        PostAudience aud;
+        //PostAudience aud;
+       // String audval = aud.getDescription();
 
         switch (noption) {
             case "pt":
@@ -69,14 +72,14 @@ public class TempMain {
                 System.out.println("audience selected : link");
                 aud = PostAudience.Subscribers;
                 break;
-                    
-
+        }
+        System.out.println("Enter Post content");
+        String dat = scan.next();
+        Content content = new Content(dat);
         //create a post
-        System.out.println("Enter Post type\n" + "________________________");
-        type = scan.next();
-        System.out.println("Enter your password\n" + "________________________");
-        PostAudience = scan.next();
-        u1.addNewPost(type, null, postContent);
-
+        System.out.println("Selected Post Type: " + type.toString());
+        System.out.println("Selected Post Audience: " + aud.toString());
+        System.out.println("Content: " + content);
+        u1.addNewPost(type, aud, postContent);
     }
 }
