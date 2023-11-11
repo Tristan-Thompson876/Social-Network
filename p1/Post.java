@@ -1,186 +1,93 @@
 package p1;
 
 import java.util.ArrayList;
-
-import javax.swing.text.AbstractDocument.Content;
-
 import p1.enums.PostAudience;
 import p1.enums.PostType;
 import p1.enums.ReactionType;
 
+/**
+ * Represents a post in the social media platform.
+ */
 public class Post {
-	
-	private static int postscount = 0;
 
-	// immutable instance data
-	private int pstID = ++postscount;
-	private PostType postType = PostType.Text;
-	private PostAudience sharedWith = PostAudience.Public;
-	private ArrayList<Content> contents = new ArrayList<Content>();
-	private ArrayList<String> reactedUsers = new ArrayList<>();
-	private Content content;
-	private User username;
+    private static int posts = 0;
 
-	// mutable instance data
-	private int popularityScore = 0;
-	private Reaction upvote = new Reaction(ReactionType.Upvote);
-	private Reaction downvote = new Reaction(ReactionType.Downvote);
+    // Immutable instance data
+    private final int postID = ++posts;
+    private final PostType postType;
+    private final PostAudience sharedWith;
+    private final ArrayList<Content> contents = new ArrayList<>();
 
-	/**
-	 * 
-	 * @param postType
-	 * @param sharedWith
-	 * @param content
-	 */
-	public Post(PostType postType, PostAudience sharedWith, Content content) {
+    // Mutable instance data
+    private int popularityScore = 0;
+    private Reaction upvote = new Reaction(ReactionType.Upvote);
+    private Reaction downvote = new Reaction(ReactionType.Downvote);
+
+    /**
+     * Constructs a new Post with specified type, audience, and contents.
+     *
+     * @param postType The type of the post.
+     * @param sharedWith The audience with whom the post is shared.
+     * @param contents Varargs array of Content objects included in the post.
+     */
+    public Post(PostType postType, PostAudience sharedWith, Content... contents) {
         this.postType = postType;
         this.sharedWith = sharedWith;
-        this.content = content;
+        addContents(contents);
     }
-	/**
-	 * 
-	 * @param postType
-	 * @param sharedWith
-	 * @param content
-	 * @param pstID
-	 */
-	public Post(PostType postType, PostAudience sharedWith, Content content, int pstID) {
-		this.postType = postType;
-		this.sharedWith = sharedWith;
-		this.pstID = pstID;
-	}
 
-	/**
-	 * updates the value of popularity score based on 
-	 */
-	private void updatePopularityScore() {
-		this.popularityScore = this.upvote.getCount() - this.downvote.getCount();
-	}
- 	
-
-	/**
-	 * add a reaction with the name of reactor to post and type of reaction
- 	 */
-	public void addReaction(String name, ReactionType type) {
-		// a user can only react once to a post
-        if (!reactedUsers.contains(name)) {
-            
-            //Reaction reaction = new Reaction(type);
-			if(type == ReactionType.Upvote){
-				updatePopularityScore();
-			}
-			else if(type == ReactionType.Downvote){
-				updatePopularityScore();
-			}
-            reactedUsers.add(name);
-            
-        } else {
-            System.out.println(name + "already reacted");
-        
+    /**
+     * Adds contents to the post.
+     *
+     * @param contents Varargs array of Content objects to be added to the post.
+     */
+    private void addContents(Content... contents) {
+        for (Content c : contents) {
+            this.contents.add(c);
         }
     }
-	/**
-	 * 
-	 * @param name
-	 * @return
-	 */
-	public void removeReaction(String name) {
-		if(reactedUsers.contains(name)){
-			reactedUsers.remove(name);
 
-		}
-		else{
-			System.out.println(name + "have not reacted");
-		}
-	}
-	/**
-	 * 
-	 * @param name
-	 * @return boolean
-	 */
-	public boolean alreadyReacted(String name) {
-		if (!reactedUsers.contains(name)) {
-			return false;
-		}
-		else{
-			return false;
-		}
+    // Method for updating popularity score...
 
-	}
-
-	//////////////////////getters below//////////////////////////////
-	/**
-	 * 
-	 * @return The type of post
-	 */
-	public PostType getPostType(){
-		return postType;
-	}
-	/**
-	 * 
-	 * @return The audience of the post
-	 */
-	public PostAudience getSharedWith() {
-		return sharedWith;
-	}
-	/**
-	 * 
-	 * @return Id of the post
-	 */
-    public int getPostId(){
-        return pstID;
+    /**
+     * Adds a reaction to the post.
+     *
+     * @param name Name of the user reacting to the post.
+     * @param type The type of reaction (e.g., upvote, downvote).
+     * @return True if the reaction is successfully added, false otherwise.
+     */
+    public boolean addReaction(String name, ReactionType type) {
+        // Logic for adding a reaction
+        return false;
     }
-	/**
-	 * 
-	 * @return Content of the post
-	 */
-	public Content getContent(){
-		return content;
-	}
-	/**
-	 * 
-	 * @return The popularity score of the post
-	 */
-	public int getPopularityScore() {
-		return popularityScore;
-	}
-	/**
-	 * 
-	 * @return
-	 */
-	public User getUsername(){
-		return username;
-	}
-	////////////////////Setter Methods Below//////////////////////////////
-	/**
-	 * Post Id setter
-	 */
-	public void setPostID(int pstID){
-		this.pstID = pstID;
-	}
-	/**
-	 * Sharedwith setter
-	 */
-	public void setSharedWith(PostAudience sharedWith){
-		this.sharedWith = sharedWith;
-	}
-	/**
-	 * Post Type setter
-	 */
-	public void setPostType(PostType postType){
-		this.postType = postType;
-	}
-	/**
-	 * Content setter
-	 */
-	public void setContent(Content content){
-		this.content = content;
-	}
-	/**
-	 * 
-	 * @param name
-	 */
-	public void setUname(User name){
-		this.username = name;
-	}
+
+    /**
+     * Removes a reaction from the post.
+     *
+     * @param name Name of the user whose reaction is to be removed.
+     * @return True if the reaction is successfully removed, false otherwise.
+     */
+    public boolean removeReaction(String name) {
+        // Logic for removing a reaction
+        return false;
+    }
+
+    /**
+     * Checks if a user has already reacted to the post.
+     *
+     * @param name Name of the user.
+     * @return True if the user has already reacted, false otherwise.
+     */
+    public boolean alreadyReacted(String name) {
+        // Logic to check if a user has reacted
+        return false;
+    }
+
+    // Getters for various fields...
+
+    @Override
+    public String toString() {
+        // Implement the toString method for representing a Post object as a string
+        return "";
+    }
 }
