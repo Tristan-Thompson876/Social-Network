@@ -6,11 +6,8 @@ import p1.enums.FeedAlgorithm;
 
 public class Socials {
 
-	/* is immutable instance data, i.e., once set cannot be changed */
 	private String name;
 	//private String password;
-
-	/* is mutable instance data */
 	private FeedAlgorithm feedSort;
 	private ArrayList<Post> posts = new ArrayList<Post>();
 	private ArrayList<User> users = new ArrayList<User>();

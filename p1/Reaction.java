@@ -7,11 +7,8 @@ import p1.enums.ReactionType;
  * Represents a reaction to a post, such as an upvote or downvote.
  */
 public class Reaction {
-
-    // Immutable instance data: the type of the reaction (e.g., upvote or downvote)
+	
     private ReactionType type;
-
-    // Mutable instance data: list of usernames who have reacted
     private ArrayList<String> reactors = new ArrayList<>();
 
     /**
