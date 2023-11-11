@@ -23,6 +23,9 @@ public class User {
     //private List<Content> contents;
 
 	public User(String uname, String password, Post post) {
+        this.uname = uname;
+        this.password = password;
+        this.post = post;
 	}
     //////////////////////////////Getters
     public String getUname(){

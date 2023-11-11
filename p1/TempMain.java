@@ -21,6 +21,7 @@ public class TempMain {
         System.out.println("Enter your password\n" + "________________________");
         String pass = scan.next();
 
+        
         // Create a user with the provided username and password
         User u1 = new User(username, pass, null);
 
@@ -33,13 +34,14 @@ public class TempMain {
 
         // Display user information(Both are correct)
         System.out.println("User Name: " + u1.getUname());
-        //System.out.println("Password for testing: " + u1.getPassword());
-        System.out.println("User Count in Socials: " + mySocials.getAllSocialsUsers().size());
-    
 
+        System.out.println("Password for testing: " + u1.getPassword());//only for testing purposes would not display a users password
+        System.out.println("User Count in Socials: " + mySocials.getAllSocialsUsers().size());
+        // Add the user to the social instance
+        mySocials.addNewUser(u1.getUname(), u1.getPassword());
     
+       
         PostType type = null;
-        PostAudience aud = null;
         System.out.println("Post Type:/n option 1: Text/n option 2: external link");
         //break;
         int option = scan.nextInt();
@@ -53,33 +55,51 @@ public class TempMain {
                 System.out.println("post type selected : link");
                 type = PostType.ExternalLink;
                 break;
-        }
+            } 
+        PostAudience aud = PostAudience.Public;
         System.out.println("Post audience: (Private: pt/n/Public: pc/n/Subscribers: subs/n)");
         String noption = scan.next();
         //PostAudience aud;
        // String audval = aud.getDescription();
 
         switch (noption) {
-            case "pt":
+            case "pt ":
                 System.out.println("audience selected : text");
                 aud = PostAudience.Private;
                 break;
             case "pc":
-                System.out.println("audience selected : link");
+                System.out.println("audience selected : public");
                 aud = PostAudience.Public;
                 break;
             case "subs":
-                System.out.println("audience selected : link");
+                System.out.println("audience selected : subscribers only");
                 aud = PostAudience.Subscribers;
                 break;
-        }
+            }
+
         System.out.println("Enter Post content");
         String dat = scan.next();
         Content content = new Content(dat);
         //create a post
-        System.out.println("Selected Post Type: " + type.toString());
-        System.out.println("Selected Post Audience: " + aud.toString());
+        System.out.println("Post Type: " + type.toString());
+        System.out.println("Post Audience: " + aud.toString());
         System.out.println("Content: " + content);
         u1.addNewPost(type, aud, postContent);
+        
+        
+        Reaction react = null;
+        String coption = scan.next();
+
+        switch (coption) {
+            case "y":
+                System.out.println("upvote");
+                react = new Reaction(ReactionType.Upvote);
+                break;
+            case "n":
+                System.out.println("downvote");
+                react = new Reaction(ReactionType.Downvote);
+                break;}
+        u1.reactToPost(dat, react.getType());;
+    
     }
 }
