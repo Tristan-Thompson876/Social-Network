@@ -77,7 +77,7 @@ public class TempMain {
         //create a post
         System.out.println("Post Type: " + type.toString());
         System.out.println("Post Audience: " + aud.toString());
-        System.out.println("Content: " + content);
+        System.out.println(content);
         u1.addNewPost(type, aud, postContent);
         
         
