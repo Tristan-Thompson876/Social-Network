@@ -8,7 +8,7 @@ import p1.enums.PostAudience;
 import p1.enums.PostType;
 import p1.enums.ReactionType;
 
-public class Post {
+public class Post implements Comparable<Post> {
 	
 	private static int postscount = 0;
 
@@ -175,5 +175,9 @@ public class Post {
 	 */
 	public void setUname(User name){
 		this.username = name;
+	}
+	@Override
+    public int compareTo(Post other) {
+		return this.popularityScore - other.popularityScore;
 	}
 }
