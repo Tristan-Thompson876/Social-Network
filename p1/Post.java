@@ -28,6 +28,7 @@ public class Post {
 
 	/**
 	 * 
+	 * constructor for post
 	 * @param postType
 	 * @param sharedWith
 	 * @param content
@@ -38,7 +39,7 @@ public class Post {
         this.content = content;
     }
 	/**
-	 * 
+	 * constructor for post
 	 * @param postType
 	 * @param sharedWith
 	 * @param content
@@ -64,9 +65,8 @@ public class Post {
             
             //Reaction reaction = new Reaction(type);
 			if(type == ReactionType.Upvote){
-				popularityScore++;
+            	reactedUsers.add(name);
 			}
-            reactedUsers.add(name);
             
         } else {
             System.out.println(name + "already reacted");
@@ -74,9 +74,8 @@ public class Post {
         }
     }
 	/**
-	 * 
-	 * @param name
-	 * @return
+	 * removes a reaction
+	 * @param name 
 	 */
 	public void removeReaction(String name) {
 		if(reactedUsers.contains(name)){

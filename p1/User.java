@@ -20,8 +20,8 @@ public class User {
     private PostAudience sharedWith;
     private Post post;
     private Content content;
-    //private List<Content> contents;
 
+    
 	public User(String uname, String password, Post post) {
         this.uname = uname;
         this.password = password;
@@ -52,6 +52,11 @@ public class User {
 		return false;
 	}
 
+    /**
+     * method to react to a post
+     * @param pstID
+     * @param vote
+     */
 	public void reactToPost(String pstID, ReactionType vote) {
         for(Post p : posts){
             if(p.getPostId() == Integer.parseInt(pstID)){
@@ -61,6 +66,12 @@ public class User {
         }
 	}
 
+    /**
+     * method to add new post
+     * @param postType
+     * @param sharedWith
+     * @param content
+     */
     public void addNewPost(PostType postType, PostAudience sharedWith, Content content)
     {
         this.postType = postType;
@@ -71,8 +82,10 @@ public class User {
         //p.setPostID(pstID);
         posts.add(p);
     }
+
     /**
      * 
+     * method to delete post
      * @param pstID
      */
     public void deletePost(int pstID){
@@ -83,6 +96,11 @@ public class User {
         }
     }
 
+    /**
+     * 
+     * @param name
+     * @return boolean
+     */
 	public boolean unrestrict(String name) {
         if(isRestricted(name) == false){
             return true;
@@ -90,6 +108,11 @@ public class User {
 		return false;
 	}
 
+    /**
+     * 
+     * @param name
+     * @return boolean
+     */
 	public boolean isASubscriber(String name) {
         for(String sub: subscribers){
             if(sub == name){
@@ -99,6 +122,11 @@ public class User {
 		return false;
 	}
 
+    /**
+     * 
+     * @param name
+     * @return boolean
+     */
 	public boolean isSubscribedTo(String name) {
 		for(String sub: subscribed){
             if(sub == name){
@@ -108,6 +136,11 @@ public class User {
 		return false;
 	}
 
+    /**
+     * 
+     * @param name
+     * @return boolean
+     */
 	public boolean isRestricted(String name) {
 		for(String sub: restricted){
             if(sub == name){
@@ -117,9 +150,34 @@ public class User {
 		return false;
 	}
 
+    /**
+     * 
+     * @param name
+     * @param pstID
+     * @return boolean
+     */
 	public boolean hasAccesstoPost(String name, int pstID) {
-		return false;
-	}
+        for (Post p : posts) {
+            if (p.getPostId() == pstID) {
+                PostAudience audience = p.getSharedWith();
+    
+                switch (audience) {
+                    case Private:
+                        return p.getUsername().getUname().equals(name);
+    
+                    case Public:
+                        return true;
+    
+                    case Subscribers:
+                        return isASubscriber(name);
+    
+                    default:
+                        return false;
+                }
+            }
+        }
+        return false;
+    }
 
 	public boolean isPostOwner(int pstID) {
         for(Post p: posts){
