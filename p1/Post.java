@@ -51,10 +51,6 @@ public class Post implements Comparable<Post> {
 		this.pstID = pstID;
 	}
 
-	/* 
-	private void updatePopularityScore() {
-	}
- 	*/
 
 	/**
 	 * add a reaction with the name of reactor to post
@@ -134,8 +130,8 @@ public class Post implements Comparable<Post> {
 	 * 
 	 * @return The popularity score of the post
 	 */
-	public int getPopularityScore() {
-		return popularityScore;
+	private void getPopularityScore(){
+		this.popularityScore = this.upvote.getCount() - this.downvote.getCount();
 	}
 	/**
 	 * 
